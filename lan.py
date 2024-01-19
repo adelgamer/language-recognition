@@ -18,61 +18,61 @@ with open("words.txt", "r") as file:
   #splitting the text into a list of words 'english'
   english = english_text.split()
 
+class language:
+  def recognise_french(text):
+    """This function return the percentage of french in the provided text"""
+    #converting the text to lower case letters
+    text = text.lower()
+    #splitting the text into words (all special characters are delimiters) and storing the words inside the   variable words
+    words = re.split(r"[\'{}[\]|.,;:!§µ?$<>\"\n\s]", text)
 
-def recognise_french(text):
-  """This function return the percentage of french in the provided text"""
-  #converting the text to lower case letters
-  text = text.lower()
-  #splitting the text into words (all special characters are delimiters) and storing the words inside the variable words
-  words = re.split(r"[\'{}[\]|.,;:!§µ?$<>\"\n\s]", text)
-  
-  # Remove empty strings using list comprehension
-  words = [word for word in words if word != ""]
-  #counting how many word is there and storing the value in word_count
-  word_count = len(words)
-  #init the score, for every word inside the list of language words adds 1 to the score
-  score = 0
-  
-  #checking words that are inside the list and adding 1 to the score
-  for word in words:
-    if word in french:
-      score += 1
-  
-  #calculating the final score in percentage and avoiding zerodivision error
-  try:
-    percentage = (score*100)/word_count
-    return percentage
-  except ZeroDivisionError:
-    raise Exception("There is no word to analyse")
+    # Remove empty strings using list comprehension
+    words = [word for word in words if word != ""]
+    #counting how many word is there and storing the value in word_count
+    word_count = len(words)
+    #init the score, for every word inside the list of language words adds 1 to the score
+    score = 0
+
+    #checking words that are inside the list and adding 1 to the score
+    for word in words:
+      if word in french:
+        score += 1
+
+    #calculating the final score in percentage and avoiding zerodivision error
+    try:
+      percentage = (score*100)/word_count
+      return percentage
+    except ZeroDivisionError:
+      raise Exception("There is no word to analyse")
 
 
-def recognise_english(text):
-  """This function return the percentage of french in the provided text"""
-  #converting the text to lower case letters
-  text = text.lower()
-  #splitting the text into words (all special characters are delimiters) and storing the words inside the variable words
-  words = re.split(r"[\'{}[\]|.,;:!§µ?$<>\"\n\s]", text)
-  
-  # Remove empty strings using list comprehension
-  words = [word for word in words if word != ""]
-  #counting how many word is there and storing the value in word_count
-  word_count = len(words)
-  #init the score, for every word inside the list of language words adds 1 to the scor
-  score = 0
-  
-  #checking words that are inside the list and adding 1 to the score
-  for word in words:
-    if word in english:
-      score += 1
-  
-  #calculating the final score in percentage and avoiding zerodivision error
-  try:
-    percentage = (score*100)/word_count
-    return percentage
-  except ZeroDivisionError:
-    raise Exception("There is no word to analyse")
+  def recognise_english(text):
+    """This function return the percentage of french in the provided text"""
+    #converting the text to lower case letters
+    text = text.lower()
+    #splitting the text into words (all special characters are delimiters) and storing the words inside the   variable words
+    words = re.split(r"[\'{}[\]|.,;:!§µ?$<>\"\n\s]", text)
+
+    # Remove empty strings using list comprehension
+    words = [word for word in words if word != ""]
+    #counting how many word is there and storing the value in word_count
+    word_count = len(words)
+    #init the score, for every word inside the list of language words adds 1 to the scor
+    score = 0
+
+    #checking words that are inside the list and adding 1 to the score
+    for word in words:
+      if word in english:
+        score += 1
+
+    #calculating the final score in percentage and avoiding zerodivision error
+    try:
+      percentage = (score*100)/word_count
+      return percentage
+    except ZeroDivisionError:
+      raise Exception("There is no word to analyse")
     
 
 # while (True):
 #   input_text = input("\n\nEnter a text:\n")
-#   print("\n" + str(recognise_english(input_text)))
+#   print("\n" + str(language.recognise_english(input_text)))
